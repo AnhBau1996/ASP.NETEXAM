@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-controller="Department" asp-action="EditDepartment" method="post">
+    <h2>Edit Department</h2>
+
+    <div class="form-group">
+        <label for="DepartmentName">Department Name:</label>
+        <input type="text" name="DepartmentName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="DepartmentCode">Department Code:</label>
+        <input type="text" name="DepartmentCode" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Location">Location:</label>
+        <input type="text" name="Location" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="NumberOfPersonnel">Number of Personnel:</label>
+        <input type="text" name="NumberOfPersonnel" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Save Department</button>
+</form>

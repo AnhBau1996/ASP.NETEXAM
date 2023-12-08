@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TNTA_TEST.Models.Employee>
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee Code</th>
+            <th>Rank</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeName</td>
+                <td>@employee.EmployeeCode</td>
+                <td>@employee.Rank</td>
+                <td>@employee.Department.DepartmentName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
