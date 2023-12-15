@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.WebSockets;
 using TNTA_TEST.Models;
 
 
@@ -17,11 +18,13 @@ namespace TNTA_TEST.Controllers
         public IActionResult Index()
         {
             var employees = _context.Employees.Include(e => e.Department).ToList();
+            
             return View(employees);
         }
         public IActionResult AddEmployee()
         {
-            return View();
+            ViewBag.Departments = _context.Departments.ToList();
+            return View(ViewBag.Departments);
         }
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
@@ -32,17 +35,22 @@ namespace TNTA_TEST.Controllers
         }
         public async Task<IActionResult> Edit(int id)
         {
+            var model = new Employee();
             var employee = await _context.Employees.FindAsync(id);
+            model.EmployeeName = employee.EmployeeName;
+            model.Department = employee.Department;
+
+            ViewBag.Departments = _context.Departments.ToList();
 
             if (employee == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
-            return View(employee);
+            return View(model);
         }
 
-        
+
         [HttpPost]
         public async Task<IActionResult> Edit(Employee employee)
         {
@@ -50,7 +58,7 @@ namespace TNTA_TEST.Controllers
             {
                 _context.Update(employee);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Index");
             }
 
             return View(employee);
@@ -61,13 +69,13 @@ namespace TNTA_TEST.Controllers
 
             if (employee == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             return View(employee);
         }
 
-       
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -76,12 +84,12 @@ namespace TNTA_TEST.Controllers
 
             if (employee == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
         }
     }
 }

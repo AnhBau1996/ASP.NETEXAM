@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TNTA_TEST")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a0752baf8f36945e3d4d923155b2664e07e1c44")]
 [assembly: System.Reflection.AssemblyProductAttribute("TNTA_TEST")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TNTA_TEST")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

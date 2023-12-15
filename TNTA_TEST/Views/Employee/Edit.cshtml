@@ -1,13 +1,16 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+@model TNTA_TEST.Models.Employee
 @{
+    var depLst = new List<Department>(ViewBag.Departments);
 }
 <form asp-controller="Employee" asp-action="Edit" method="post">
-    <h2>Add Employee</h2>
+    <h2>Edit Employee</h2>
     <div class="form-group">
         <label for="EmployeeName">Employee Name:</label>
-        <input type="text" name="EmployeeName" class="form-control" required />
+        <input type="text" name="EmployeeName" class="form-control" required value="@Model.EmployeeName"/>
     </div>
     <div class="form-group">
         <label for="EmployeeCode">Employee Code:</label>
@@ -20,7 +23,7 @@
     <div class="form-group">
         <label for="DepartmentId">Department:</label>
         <select name="DepartmentId" class="form-control" required>
-            @foreach (var department in ViewBag.Departments)
+            @foreach (var department in depLst)
             {
                 <option value="@department.Id">@department.DepartmentName</option>
             }
